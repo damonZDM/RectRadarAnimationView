@@ -52,9 +52,7 @@ class ViewController: UIViewController {
             $0.size.equalTo(clearButton.frame.size)
         }
         
-        rectView1.addRadarAnimation()
-        rectView2.addRadarAnimation()
-        rectView3.addRadarAnimation()
+        startRadarAnimation()
     }
     
     @objc
@@ -66,8 +64,8 @@ class ViewController: UIViewController {
     
     @objc
     private func startRadarAnimation() {
-        rectView1.addRadarAnimation()
-        rectView2.addRadarAnimation()
+        rectView1.addRadarAnimation(fillColor: .blue)
+        rectView2.addRadarAnimation(fillColor: .orange, expand: 50, beginAlpha: 0.8)
         rectView3.addRadarAnimation()
     }
     
