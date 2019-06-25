@@ -12,7 +12,7 @@ extension UIView {
     
     func addRadarAnimation(fillColor: UIColor = .white, expand increment: CGFloat = 30, inset: UIEdgeInsets = .zero, beginAlpha: CGFloat = 0.5) {
         removeRadarAnimation()
-        let radarView = RectRadarAnimationView(beginFrame: frame.inset(by: inset), expand: increment, fillColor: .white, beginAlpha: beginAlpha)
+        let radarView = RectRadarAnimationView(beginFrame: frame.inset(by: inset), expand: increment, fillColor: fillColor, beginAlpha: beginAlpha)
         radarView.targetView = self
         radarView.snp.makeConstraints {
             $0.center.equalTo(self)
@@ -72,7 +72,7 @@ class RectRadarAnimationView: UIView {
         timer.map { RunLoop.current.add($0, forMode: .common) }
         timer?.fire()
         displayLink = CADisplayLink(target: self, selector: #selector(radarAnimation))
-        displayLink?.add(to: RunLoop.current, forMode: .default)
+        displayLink?.add(to: RunLoop.current, forMode: .common)
     }
     
     func removeAnimation() {
