@@ -9,21 +9,36 @@
 import UIKit
 
 extension UIView {
+    
     func addRadarAnimation(fillColor: UIColor = .white, expand increment: CGFloat = 30, inset: UIEdgeInsets = .zero, beginAlpha: CGFloat = 0.5) {
-        guard let superView = self.superview else {
-            return
-        }
         let radarView = RectRadarAnimationView(beginFrame: frame.inset(by: inset), expand: increment, fillColor: .white, beginAlpha: beginAlpha)
-        superView.insertSubview(radarView, belowSubview: self)
+        radarView.targetView = self
         radarView.snp.makeConstraints {
             $0.center.equalTo(self)
             $0.size.equalTo(radarView.frame.size)
         }
         radarView.addAnimation()
     }
+    
+    func removeRadarAnimation() {
+        superview?.subviews.forEach {
+            if let radarView = $0 as? RectRadarAnimationView, radarView.targetView === self {
+                $0.removeFromSuperview()
+            }
+        }
+    }
 }
 
 class RectRadarAnimationView: UIView {
+    
+    weak var targetView: UIView? {
+        didSet {
+            guard let targetView = targetView else {
+                return
+            }
+            targetView.superview?.insertSubview(self, belowSubview: targetView)
+        }
+    }
 
     private var displayLink: CADisplayLink?
     

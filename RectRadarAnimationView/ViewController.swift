@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         view.addSubview(rectView1)
         view.addSubview(rectView2)
         view.addSubview(rectView3)
+        view.addSubview(clearButton)
         
         rectView1.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -38,10 +39,25 @@ class ViewController: UIViewController {
             $0.size.equalTo(rectView3.frame.size)
         }
         
+        clearButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(-30)
+            $0.size.equalTo(clearButton.frame.size)
+        }
+        
         rectView1.addRadarAnimation()
         rectView2.addRadarAnimation()
         rectView3.addRadarAnimation()
     }
+    
+    @objc
+    private func clearRadarAnimation() {
+        rectView1.removeRadarAnimation()
+        rectView2.removeRadarAnimation()
+        rectView3.removeRadarAnimation()
+    }
+    
+    // MARK: - lazy
 
     private lazy var rectView1: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 40))
@@ -65,6 +81,14 @@ class ViewController: UIViewController {
         view.layer.masksToBounds = true
         view.backgroundColor = .yellow
         return view
+    }()
+    
+    private lazy var clearButton: UIButton = {
+        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 150, height: 40))
+        btn.setTitle("清楚雷达动画", for:.normal)
+        
+        btn.addTarget(self, action: #selector(clearRadarAnimation), for: .touchUpInside)
+        return btn
     }()
 }
 
