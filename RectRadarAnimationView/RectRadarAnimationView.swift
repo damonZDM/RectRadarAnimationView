@@ -11,6 +11,7 @@ import UIKit
 extension UIView {
     
     func addRadarAnimation(fillColor: UIColor = .white, expand increment: CGFloat = 30, inset: UIEdgeInsets = .zero, beginAlpha: CGFloat = 0.5) {
+        removeRadarAnimation()
         let radarView = RectRadarAnimationView(beginFrame: frame.inset(by: inset), expand: increment, fillColor: .white, beginAlpha: beginAlpha)
         radarView.targetView = self
         radarView.snp.makeConstraints {
@@ -61,12 +62,15 @@ class RectRadarAnimationView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        print("deinit success")
+    }
+    
     func addAnimation() {
         removeAnimation()
         timer = Timer(timeInterval: 1, target: self, selector: #selector(addRadarView), userInfo: nil, repeats: true)
-        timer.map {
-            RunLoop.current.add($0, forMode: .common)
-        }
+        timer.map { RunLoop.current.add($0, forMode: .common) }
+        timer?.fire()
         displayLink = CADisplayLink(target: self, selector: #selector(radarAnimation))
         displayLink?.add(to: RunLoop.current, forMode: .default)
     }
