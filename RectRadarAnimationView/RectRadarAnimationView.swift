@@ -10,7 +10,14 @@ import UIKit
 
 extension UIView {
     
-    func addRadarAnimation(fillColor: UIColor = .white, expand increment: CGFloat = 30, inset: UIEdgeInsets = .zero, beginAlpha: CGFloat = 0.5) {
+    /// 给View添加雷达动画
+    ///
+    /// - Parameters:
+    ///   - inset: 当前frame加上内边距作为起始Frame
+    ///   - fillColor: 渐变填充色
+    ///   - increment: 扩展范围
+    ///   - beginAlpha: 初始透明度
+    func addRadarAnimation(inset: UIEdgeInsets = .zero, fillColor: UIColor = .white, expand increment: CGFloat = 30, beginAlpha: CGFloat = 0.5) {
         removeRadarAnimation()
         let radarView = RectRadarAnimationView(beginFrame: frame.inset(by: inset), expand: increment, fillColor: fillColor, beginAlpha: beginAlpha)
         radarView.targetView = self
@@ -21,6 +28,7 @@ extension UIView {
         radarView.addAnimation()
     }
     
+    /// 移除雷达动画
     func removeRadarAnimation() {
         superview?.subviews.forEach {
             if let radarView = $0 as? RectRadarAnimationView, radarView.targetView === self {
