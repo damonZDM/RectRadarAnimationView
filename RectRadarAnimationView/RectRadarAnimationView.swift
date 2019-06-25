@@ -9,11 +9,11 @@
 import UIKit
 
 extension UIView {
-    func addRadarAnimation(fillColor: UIColor = .white, expand increment: CGFloat = 30, inset: UIEdgeInsets = .zero) {
+    func addRadarAnimation(fillColor: UIColor = .white, expand increment: CGFloat = 30, inset: UIEdgeInsets = .zero, beginAlpha: CGFloat = 0.5) {
         guard let superView = self.superview else {
             return
         }
-        let radarView = RectRadarAnimationView(beginFrame: frame.inset(by: inset), expand: increment, fillColor: .white)
+        let radarView = RectRadarAnimationView(beginFrame: frame.inset(by: inset), expand: increment, fillColor: .white, beginAlpha: beginAlpha)
         superView.insertSubview(radarView, belowSubview: self)
         radarView.snp.makeConstraints {
             $0.center.equalTo(self)
@@ -27,15 +27,18 @@ class RectRadarAnimationView: UIView {
 
     private var displayLink: CADisplayLink?
     
+    private var timer: Timer?
+    
     private var maxIncrement: CGFloat
     
     private var fillColor: UIColor
+
+    private var beginAlpha: CGFloat
     
-    private var timer: Timer?
-    
-    init(beginFrame frame: CGRect,  expand increment: CGFloat, fillColor: UIColor) {
+    init(beginFrame frame: CGRect,  expand increment: CGFloat, fillColor: UIColor, beginAlpha: CGFloat) {
         self.maxIncrement = increment
         self.fillColor = fillColor
+        self.beginAlpha = beginAlpha
         super.init(frame: frame.inset(by: UIEdgeInsets(-increment)))
     }
     
@@ -73,7 +76,7 @@ class RectRadarAnimationView: UIView {
     
     @objc
     func addRadarView() {
-        let radarView = RadarView(beginFrame: bounds.inset(by: UIEdgeInsets(maxIncrement)), expand: maxIncrement, fillColor: fillColor)
+        let radarView = RadarView(beginFrame: bounds.inset(by: UIEdgeInsets(maxIncrement)), expand: maxIncrement, fillColor: fillColor, beginAlpha: beginAlpha)
         addSubview(radarView)
     }
     
@@ -103,10 +106,14 @@ extension RectRadarAnimationView {
         /// 填充色
         private var fillColor: UIColor
         
-        init(beginFrame: CGRect, expand increment: CGFloat, fillColor: UIColor) {
+        /// 初始透明度
+        private var beginAlpha: CGFloat
+        
+        init(beginFrame: CGRect, expand increment: CGFloat, fillColor: UIColor, beginAlpha: CGFloat) {
             self.beginFrame = beginFrame
             self.increment = increment
             self.fillColor = fillColor
+            self.beginAlpha = beginAlpha
             super.init(frame: beginFrame.inset(by: UIEdgeInsets(-increment)))
             self.backgroundColor = .clear
         }
@@ -121,7 +128,7 @@ extension RectRadarAnimationView {
             let ctx = UIGraphicsGetCurrentContext()
             let path = UIBezierPath(roundedRect: drawRect, cornerRadius: min(drawRect.width, drawRect.height) * 0.5).cgPath
             ctx?.addPath(path)
-            ctx?.setFillColor(fillColor.withAlphaComponent((1 - progress) * 0.5).cgColor)
+            ctx?.setFillColor(fillColor.withAlphaComponent((1 - progress) * beginAlpha).cgColor)
             ctx?.fillPath()
         }
     }
