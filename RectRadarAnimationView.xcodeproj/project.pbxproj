@@ -12,6 +12,10 @@
 		E40D119422C2030E00E59AB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E40D119222C2030E00E59AB6 /* Main.storyboard */; };
 		E40D119622C2031000E59AB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E40D119522C2031000E59AB6 /* Assets.xcassets */; };
 		E40D119922C2031000E59AB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E40D119722C2031000E59AB6 /* LaunchScreen.storyboard */; };
+		E40D11A422C203ED00E59AB6 /* RectRadarAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40D11A322C203ED00E59AB6 /* RectRadarAnimationView.swift */; };
+		E40D11A622C206F900E59AB6 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = E40D11A522C206F900E59AB6 /* Cartfile */; };
+		E40D11A822C2070A00E59AB6 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E40D11A722C2070A00E59AB6 /* .gitignore */; };
+		E40D11AB22C2078200E59AB6 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40D11AA22C2078200E59AB6 /* SnapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		E40D119522C2031000E59AB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E40D119822C2031000E59AB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E40D119A22C2031000E59AB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E40D11A322C203ED00E59AB6 /* RectRadarAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectRadarAnimationView.swift; sourceTree = "<group>"; };
+		E40D11A522C206F900E59AB6 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		E40D11A722C2070A00E59AB6 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		E40D11AA22C2078200E59AB6 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E40D11AB22C2078200E59AB6 /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,8 +47,11 @@
 		E40D118222C2030E00E59AB6 = {
 			isa = PBXGroup;
 			children = (
+				E40D11A722C2070A00E59AB6 /* .gitignore */,
+				E40D11A522C206F900E59AB6 /* Cartfile */,
 				E40D118D22C2030E00E59AB6 /* RectRadarAnimationView */,
 				E40D118C22C2030E00E59AB6 /* Products */,
+				E40D11A922C2078200E59AB6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +66,7 @@
 		E40D118D22C2030E00E59AB6 /* RectRadarAnimationView */ = {
 			isa = PBXGroup;
 			children = (
+				E40D11A322C203ED00E59AB6 /* RectRadarAnimationView.swift */,
 				E40D118E22C2030E00E59AB6 /* AppDelegate.swift */,
 				E40D119022C2030E00E59AB6 /* ViewController.swift */,
 				E40D119222C2030E00E59AB6 /* Main.storyboard */,
@@ -62,6 +75,14 @@
 				E40D119A22C2031000E59AB6 /* Info.plist */,
 			);
 			path = RectRadarAnimationView;
+			sourceTree = "<group>";
+		};
+		E40D11A922C2078200E59AB6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E40D11AA22C2078200E59AB6 /* SnapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +95,7 @@
 				E40D118722C2030E00E59AB6 /* Sources */,
 				E40D118822C2030E00E59AB6 /* Frameworks */,
 				E40D118922C2030E00E59AB6 /* Resources */,
+				E40D11AC22C2078C00E59AB6 /* Carthage Script */,
 			);
 			buildRules = (
 			);
@@ -122,19 +144,44 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E40D11A822C2070A00E59AB6 /* .gitignore in Resources */,
 				E40D119922C2031000E59AB6 /* LaunchScreen.storyboard in Resources */,
 				E40D119622C2031000E59AB6 /* Assets.xcassets in Resources */,
+				E40D11A622C206F900E59AB6 /* Cartfile in Resources */,
 				E40D119422C2030E00E59AB6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E40D11AC22C2078C00E59AB6 /* Carthage Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+			);
+			name = "Carthage Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E40D118722C2030E00E59AB6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E40D11A422C203ED00E59AB6 /* RectRadarAnimationView.swift in Sources */,
 				E40D119122C2030E00E59AB6 /* ViewController.swift in Sources */,
 				E40D118F22C2030E00E59AB6 /* AppDelegate.swift in Sources */,
 			);
@@ -284,6 +331,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9WFM38BL46;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = RectRadarAnimationView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -302,6 +353,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9WFM38BL46;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = RectRadarAnimationView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
