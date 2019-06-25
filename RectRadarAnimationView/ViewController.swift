@@ -37,6 +37,10 @@ class ViewController: UIViewController {
             $0.centerY.equalTo(rectView2).offset(200)
             $0.size.equalTo(rectView3.frame.size)
         }
+        
+        rectView1.addRadarAnimation()
+        rectView2.addRadarAnimation()
+        rectView3.addRadarAnimation()
     }
 
     private lazy var rectView1: UIView = {
