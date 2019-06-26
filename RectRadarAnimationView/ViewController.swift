@@ -104,7 +104,7 @@ class ViewController: UIViewController {
     
     private lazy var clearButton: UIButton = {
         let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 150, height: 40))
-        btn.setTitle("清楚动画", for:.normal)
+        btn.setTitle("移除动画", for:.normal)
         btn.addTarget(self, action: #selector(clearRadarAnimation), for: .touchUpInside)
         return btn
     }()

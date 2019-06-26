@@ -48,6 +48,8 @@ class RectRadarAnimationView: UIView {
             targetView.superview?.insertSubview(self, belowSubview: targetView)
         }
     }
+    
+    private var reusableRadarCellArray: [RadarCell] = []
 
     private var displayLink: CADisplayLink?
     
@@ -70,10 +72,6 @@ class RectRadarAnimationView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        print("deinit success")
-    }
-    
     func addAnimation() {
         removeAnimation()
         timer = Timer(timeInterval: 1, target: self, selector: #selector(addRadarView), userInfo: nil, repeats: true)
@@ -92,10 +90,11 @@ class RectRadarAnimationView: UIView {
     @objc
     func radarAnimation() {
         subviews.forEach {
-            if let radarView = $0 as? RadarView {
+            if let radarView = $0 as? RadarCell {
                 radarView.progress += 0.005
                 if radarView.progress >= 1.0 {
                     radarView.removeFromSuperview()
+                    reusableRadarCellArray.append(radarView)
                 }
             }
         }
@@ -103,8 +102,15 @@ class RectRadarAnimationView: UIView {
     
     @objc
     func addRadarView() {
-        let radarView = RadarView(beginFrame: bounds.inset(by: UIEdgeInsets(maxIncrement)), expand: maxIncrement, fillColor: fillColor, beginAlpha: beginAlpha)
-        addSubview(radarView)
+        let radarCell = { () -> RectRadarAnimationView.RadarCell in
+            if let cell = reusableRadarCellArray.first {
+                reusableRadarCellArray.removeFirst()
+                cell.progress = 0.0
+                return cell
+            }
+            return RadarCell(beginFrame: bounds.inset(by: UIEdgeInsets(maxIncrement)), expand: maxIncrement, fillColor: fillColor, beginAlpha: beginAlpha)
+        }()
+        addSubview(radarCell)
     }
     
     override func removeFromSuperview() {
@@ -115,7 +121,7 @@ class RectRadarAnimationView: UIView {
 }
 
 extension RectRadarAnimationView {
-    private class RadarView: UIView {
+    private class RadarCell: UIView {
         
         /// 进度 0.0...1.0
         var progress: CGFloat = 0 {
