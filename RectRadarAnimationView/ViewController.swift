@@ -57,17 +57,21 @@ class ViewController: UIViewController {
     
     @objc
     private func clearRadarAnimation() {
-        rectView1.removeRadarAnimation()
-        rectView2.removeRadarAnimation()
-        rectView3.removeRadarAnimation()
+        radarView1?.removeFromSuperview()
+        radarView2?.removeFromSuperview()
+        radarView3?.removeFromSuperview()
     }
     
     @objc
     private func startRadarAnimation() {
-        rectView1.addRadarAnimation(fillColor: .blue)
-        rectView2.addRadarAnimation(fillColor: .orange, expand: 50, beginAlpha: 0.8)
-        rectView3.addRadarAnimation()
+        radarView1 = rectView1.addRadarAnimation(fillColor: .blue)
+        radarView2 = rectView2.addRadarAnimation(fillColor: .orange, expand: 50, beginAlpha: 0.8)
+        radarView3 = rectView3.addRadarAnimation()
     }
+    
+    private var radarView1: RectRadarAnimationView?
+    private var radarView2: RectRadarAnimationView?
+    private var radarView3: RectRadarAnimationView?
     
     // MARK: - lazy
 

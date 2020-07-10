@@ -16,6 +16,8 @@
 		E40D11A622C206F900E59AB6 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = E40D11A522C206F900E59AB6 /* Cartfile */; };
 		E40D11A822C2070A00E59AB6 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E40D11A722C2070A00E59AB6 /* .gitignore */; };
 		E40D11AB22C2078200E59AB6 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40D11AA22C2078200E59AB6 /* SnapKit.framework */; };
+		E4F2411D24B8102200E6365F /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2411C24B8102200E6365F /* Array+Ext.swift */; };
+		E4F2411F24B813F000E6365F /* UIEdgeInsets+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2411E24B813F000E6365F /* UIEdgeInsets+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		E40D11A522C206F900E59AB6 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		E40D11A722C2070A00E59AB6 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E40D11AA22C2078200E59AB6 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		E4F2411C24B8102200E6365F /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
+		E4F2411E24B813F000E6365F /* UIEdgeInsets+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,7 @@
 				E40D11A322C203ED00E59AB6 /* RectRadarAnimationView.swift */,
 				E40D118E22C2030E00E59AB6 /* AppDelegate.swift */,
 				E40D119022C2030E00E59AB6 /* ViewController.swift */,
+				E4F2411B24B8101300E6365F /* Extensions */,
 				E40D119222C2030E00E59AB6 /* Main.storyboard */,
 				E40D119522C2031000E59AB6 /* Assets.xcassets */,
 				E40D119722C2031000E59AB6 /* LaunchScreen.storyboard */,
@@ -83,6 +88,15 @@
 				E40D11AA22C2078200E59AB6 /* SnapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E4F2411B24B8101300E6365F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E4F2411C24B8102200E6365F /* Array+Ext.swift */,
+				E4F2411E24B813F000E6365F /* UIEdgeInsets+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +196,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E40D11A422C203ED00E59AB6 /* RectRadarAnimationView.swift in Sources */,
+				E4F2411D24B8102200E6365F /* Array+Ext.swift in Sources */,
+				E4F2411F24B813F000E6365F /* UIEdgeInsets+Ext.swift in Sources */,
 				E40D119122C2030E00E59AB6 /* ViewController.swift in Sources */,
 				E40D118F22C2030E00E59AB6 /* AppDelegate.swift in Sources */,
 			);
